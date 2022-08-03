@@ -1,0 +1,36 @@
+@import './common/base.scss';
+
+.radio-item{
+    display: inline-flex;
+    align-items: flex-start;
+    font-size: .875rem;
+    --radio-color:#666;
+}
+.radio-input{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    margin: -2px;
+}
+.radio-icon{
+    position: relative;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    transition: border-color .15s ease;
+    :after{
+        content: "";
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0);
+        background: var(--radio-color);
+        transition: transform .15s ease;
+    }
+}

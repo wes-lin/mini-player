@@ -1,0 +1,69 @@
+body {
+  // background: #e1e7ec;
+  background: #dfe7ef;
+  font-family: "Bitter", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  // background: url(../img/bg.png) no-repeat center;
+  background-size: cover;
+  @media screen and (max-width: 700px), (max-height: 500px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+[v-cloak] {
+  display: none;
+}
+[v-cloak] > * {
+  display: none;
+}
+
+//scale out
+
+.scale-out-enter-active {
+  transition: all .35s ease-in-out;
+}
+.scale-out-leave-active {
+  transition: all .35s ease-in-out;
+}
+.scale-out-enter-from {
+  transform: scale(.55);
+  pointer-events: none;
+  opacity: 0;
+}
+.scale-out-leave-to {
+  transform: scale(1.2);
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+//scale in
+
+.scale-in-enter-active {
+  transition: all .35s ease-in-out;
+}
+.scale-in-leave-active {
+  transition: all .35s ease-in-out;
+}
+.scale-in-enter-from {
+  transform: scale(1.2);
+  pointer-events: none;
+  opacity: 0;
+}
+.scale-in-leave-to {
+  transform: scale(.55);
+  pointer-events: none;
+  opacity: 0;
+}

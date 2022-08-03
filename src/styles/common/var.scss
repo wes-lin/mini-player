@@ -1,0 +1,20 @@
+/* Color
+-------------------------- */
+$--color-white: #FFFFFF !default;
+$--color-primary: #0070F3 !default;
+$--color-warning: #E6A23C !default;
+$--color-danger: #F56C6C !default;
+
+$--color-text-regular: #606266 !default;
+$--color-text-placeholder: #C0C4CC !default;
+
+$--border-color-base: #DCDFE6 !default;
+$--border-color-lighter: #EBEEF5 !default;
+
+$--button-default-font-color: $--color-text-regular !default;
+$--button-default-background-color: $--color-white !default;
+$--button-default-border-color: $--border-color-base !default;
+
+$--button-disabled-font-color: $--color-text-placeholder !default;
+$--button-disabled-background-color: $--color-white !default;
+$--button-disabled-border-color: $--border-color-lighter !default;
