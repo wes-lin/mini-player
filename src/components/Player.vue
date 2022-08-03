@@ -93,6 +93,8 @@ const showPath = ref(false)
 const paths = reactive([])
 const selectedRepository = ref('')
 
+const radio = ref('test')
+
 const currentTrack = computed(() => {
   return tracks[currentTrackIndex.value]
 })
@@ -372,7 +374,29 @@ const back = () => {
         Search
       </w-button>
       <div class="repository-list">
-        <w-radio label="test" />
+        <ul>
+          <li>
+            <w-radio
+              v-model="radio"
+              label="test"
+              name="a"
+            />
+          </li>
+          <li>
+            <w-radio
+              v-model="radio"
+              label="test1"
+              name="a"
+            />
+          </li>
+          <li>
+            <w-radio
+              v-model="radio"
+              label="test2"
+              name="a"
+            />
+          </li>
+        </ul>
         <div
           v-for="repository in repositories"
           v-show="!showPath"
