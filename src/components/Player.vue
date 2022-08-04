@@ -357,7 +357,7 @@ const back = () => {
     <div v-cloak />
   </div>
   <w-dialog
-    :show="showDialog"
+    :visible="showDialog"
     show-cancel
     @cancel="closeDialog"
   >
@@ -368,35 +368,40 @@ const back = () => {
       </select>
       <input
         v-model="keyword"
-        placeholder="Search"
+        placeholder="Input"
       >
       <w-button @click="search">
-        Search
+        Import
       </w-button>
       <div class="repository-list">
-        <ul>
-          <li>
+        <div class="file-tree_tree">
+          <li class="file-tree_dir">
             <w-radio
               v-model="radio"
               label="test"
               name="a"
             />
+            <div class="file-tree_tree">
+              <ul>
+                <li>
+                  <w-radio
+                    v-model="radio"
+                    label="test1"
+                    name="a"
+                  />
+                </li>
+                <li>
+                  <w-radio
+                    v-model="radio"
+                    label="test2"
+                    name="a"
+                  />
+                </li>
+              </ul>
+            </div>
           </li>
-          <li>
-            <w-radio
-              v-model="radio"
-              label="test1"
-              name="a"
-            />
-          </li>
-          <li>
-            <w-radio
-              v-model="radio"
-              label="test2"
-              name="a"
-            />
-          </li>
-        </ul>
+        </div>
+
         <div
           v-for="repository in repositories"
           v-show="!showPath"
@@ -748,5 +753,15 @@ const back = () => {
 }
 .content{
   flex: 1;
+}
+
+.file-tree_tree{
+  padding-left: 30px;
+  li{
+    list-style: none;
+  }
+}
+.file-tree_dir{
+
 }
 </style>

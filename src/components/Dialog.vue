@@ -2,7 +2,7 @@
 import { watch,ref } from 'vue'
 const props = defineProps(
     {
-      show:{
+      visible:{
         type:Boolean,
         default:false,
         required:true
@@ -34,9 +34,9 @@ const props = defineProps(
     emit('cancel',e)
   }
 
-  const showSelf = ref(props.show)
+  const showSelf = ref(props.visible)
 
-  watch(() => props.show,(val) => {
+  watch(() => props.visible,(val) => {
     showSelf.value = val
   })
 
@@ -119,7 +119,7 @@ const props = defineProps(
         .dialog-body{
             flex: 1;
             overflow-x: hidden;
-            overflow-y: scroll;
+            // overflow-y: scroll;
             padding: 20px 15px 20px 15px;
         }
 
