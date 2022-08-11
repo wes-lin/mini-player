@@ -6,72 +6,72 @@ const tracks = reactive([
         {
           name: 'Mekanın Sahibi',
           artist: 'Norm Ender',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/1.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/1.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/1.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/1.mp3',
           url: 'https://www.youtube.com/watch?v=z3wAjJXbYzA',
           favorited: false,
         },
         {
           name: 'Everybody Knows',
           artist: 'Leonard Cohen',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/2.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/2.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/2.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/2.mp3',
           url: 'https://www.youtube.com/watch?v=Lin-a2lTelg',
           favorited: true,
         },
         {
           name: 'Extreme Ways',
           artist: 'Moby',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/3.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/3.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/3.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/3.mp3',
           url: 'https://www.youtube.com/watch?v=ICjyAe9S54c',
           favorited: false,
         },
         {
           name: 'Butterflies',
           artist: 'Sia',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/4.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/4.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/4.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/4.mp3',
           url: 'https://www.youtube.com/watch?v=kYgGwWYOd9Y',
           favorited: false,
         },
         {
           name: 'The Final Victory',
           artist: 'Haggard',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/5.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/5.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/5.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/5.mp3',
           url: 'https://www.youtube.com/watch?v=0WlpALnQdN8',
           favorited: true,
         },
         {
           name: 'Genius ft. Sia, Diplo, Labrinth',
           artist: 'LSD',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/6.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/6.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/6.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/6.mp3',
           url: 'https://www.youtube.com/watch?v=HhoATZ1Imtw',
           favorited: false,
         },
         {
           name: 'The Comeback Kid',
           artist: 'Lindi Ortega',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/7.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/7.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/7.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/7.mp3',
           url: 'https://www.youtube.com/watch?v=me6aoX0wCV8',
           favorited: true,
         },
         {
           name: 'Overdose',
           artist: 'Grandson',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/8.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/8.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/8.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/8.mp3',
           url: 'https://www.youtube.com/watch?v=00-Rl3Jlx-o',
           favorited: false,
         },
         {
           name: 'Rag\'n\'Bone Man',
           artist: 'Human',
-          cover: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/img/9.jpg',
-          source: 'https://cdn.jsdelivr.net/gh/muhammederdem/mini-player/mp3/9.mp3',
+          cover: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/img/9.jpg',
+          source: 'https://gcore.jsdelivr.net/gh/muhammederdem/mini-player/mp3/9.mp3',
           url: 'https://www.youtube.com/watch?v=L3wKzyIN1yk',
           favorited: false,
         },
@@ -89,11 +89,6 @@ const audio = reactive(new Audio())
 
 const keyword = ref('')
 const repositories = reactive([])
-const showPath = ref(false)
-const paths = reactive([])
-const selectedRepository = ref('')
-
-const radio = ref('test')
 
 const currentTrack = computed(() => {
   return tracks[currentTrackIndex.value]
@@ -231,21 +226,6 @@ const search = () => {
   })
 }
 
-const getPaths = (dir) => {
-  showPath.value = true
-  selectedRepository.value = dir
-  client.get(`/repos/${dir}/contents`).then(res => {
-    const dirPaths = res.data.filter(path => path.type === 'dir' && !path.path.startsWith('.'))
-    console.log(dirPaths)
-    paths.push(... dirPaths)
-  })
-}
-
-const back = () => {
-  showPath.value = false
-  paths.length = 0
-}
-
 // this is optional (for preload covers)
 // for (let index = 0; index < tracks.length; index += 1) {
 //   const element = tracks[index];
@@ -373,78 +353,6 @@ const back = () => {
       <w-button @click="search">
         Import
       </w-button>
-      <div class="repository-list">
-        <div class="file-tree_tree">
-          <li class="file-tree_dir">
-            <w-radio
-              v-model="radio"
-              label="test"
-              name="a"
-            />
-            <div class="file-tree_tree">
-              <ul>
-                <li>
-                  <w-radio
-                    v-model="radio"
-                    label="test1"
-                    name="a"
-                  />
-                </li>
-                <li>
-                  <w-radio
-                    v-model="radio"
-                    label="test2"
-                    name="a"
-                  />
-                </li>
-              </ul>
-            </div>
-          </li>
-        </div>
-
-        <div
-          v-for="repository in repositories"
-          v-show="!showPath"
-          :key="repository.id"
-          class="repository-list-entity"
-        >
-          <div class="repository-list-item">
-            <div class="avatar">
-              <img
-                :src="repository.avatar_url"
-                alt=""
-                height="50"
-                width="50"
-              >
-            </div>
-            <div class="content">
-              {{ repository.full_name }}
-            </div>
-            <w-button
-              type="primary"
-              @click="getPaths(repository.full_name)"
-            >
-              Select
-            </w-button>
-          </div>
-        </div>
-        <div v-show="showPath">
-          <w-button @click="back">
-            Back
-          </w-button>
-          <li>
-            {{ selectedRepository }}
-            <ul>
-              <li
-                v-for="path in paths"
-                :key="path.path"
-              >
-                {{ path.path }}
-              </li>
-            </ul>
-          </li>
-        </div>
-      </div>
     </div>
   </w-dialog>
 </template>
@@ -729,39 +637,4 @@ const back = () => {
   }
 }
 
-.repository-list{
-  // display: flex;
-  &-entity{
-    border:1px solid #eaeaea;
-    border-radius:5px;
-  }
-  &-entity + &-entity{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    margin-top: -1px;
-  }
-
-  &-item{
-    padding: 4px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-
-  }
-}
-.content{
-  flex: 1;
-}
-
-.file-tree_tree{
-  padding-left: 30px;
-  li{
-    list-style: none;
-  }
-}
-.file-tree_dir{
-
-}
 </style>
