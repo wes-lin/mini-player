@@ -270,34 +270,9 @@ const search = () => {
         </a>
         <div
           class="player-controls__item"
-          @click="prevTrack"
-        >
-          <w-icon icon-class="pre" />
-        </div>
-        <div
-          class="player-controls__item"
-          @click="nextTrack"
-        >
-          <w-icon icon-class="next" />
-        </div>
-        <div
-          class="player-controls__item"
           @click="opendDialog"
         >
           <w-icon icon-class="plus" />
-        </div>
-        <div
-          class="player-controls__item -xl js-play"
-          @click="play"
-        >
-          <w-icon
-            v-if="isTimerPlaying"
-            icon-class="pause"
-          />
-          <w-icon
-            v-else
-            icon-class="play"
-          />
         </div>
       </div>
     </div>
@@ -332,6 +307,33 @@ const search = () => {
       </div>
       <div class="progress__time">
         {{ currentTime }}
+      </div>
+    </div>
+    <div class="play-controls">
+      <div
+        class="play-controls__item"
+        @click="prevTrack"
+      >
+        <w-icon icon-class="pre" />
+      </div>
+      <div
+        class="play-controls__item -xl"
+        @click="play"
+      >
+        <w-icon
+          v-if="isTimerPlaying"
+          icon-class="pause"
+        />
+        <w-icon
+          v-else
+          icon-class="play"
+        />
+      </div>
+      <div
+        class="play-controls__item"
+        @click="nextTrack"
+      >
+        <w-icon icon-class="next" />
       </div>
     </div>
     <div v-cloak />
@@ -458,10 +460,11 @@ const search = () => {
 
   &-controls {
     flex: 1;
-    padding-left: 20px;
+    // padding-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding:10px 0 0 20px;
 
     @media screen and (max-width: 576px), (max-height: 500px) {
       flex-direction: row;
@@ -536,26 +539,6 @@ const search = () => {
         z-index: 2;
       }
 
-      &.-xl {
-        margin-bottom: 0;
-        font-size: 95px;
-        // filter: drop-shadow(0 2px 8px rgba(172, 184, 204, 0.3));
-        // filter: drop-shadow(0 9px 6px rgba(172, 184, 204, 0.35));
-        filter: drop-shadow(0 11px 6px rgba(172, 184, 204, 0.45));
-        color: #fff;
-        width: auto;
-        height: auto;
-        display: inline-flex;
-        @media screen and (max-width: 576px), (max-height: 500px) {
-          margin-left: auto;
-          font-size: 75px;
-          margin-right: 0;
-        }
-        &:before {
-          display: none;
-        }
-      }
-
       &.-favorite {
         &.active {
           color: red;
@@ -567,8 +550,13 @@ const search = () => {
 
 .progress {
   width: 100%;
-  margin-top: -15px;
+  margin-top: 15px;
   user-select: none;
+
+  @media screen and (min-width: 500px) {
+    margin-top:25px;
+  }
+
   &__top {
     display: flex;
     align-items: flex-end;
@@ -633,6 +621,39 @@ const search = () => {
     @media screen and (max-width: 576px), (max-height: 500px)  {
       font-size: 18px;
       min-height: 50px;
+    }
+  }
+}
+
+.play-controls{
+  display:flex;
+  align-items: center;
+  justify-content:center;
+
+  &__item {
+    display: inline-flex;
+    font-size: 35px;
+    padding: 5px;
+    margin-right: 10px;
+    color: #acb8cc;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+
+    &.-xl {
+      margin-bottom: 0;
+      font-size: 75px;
+      // filter: drop-shadow(0 2px 8px rgba(172, 184, 204, 0.3));
+      // filter: drop-shadow(0 9px 6px rgba(172, 184, 204, 0.35));
+      filter: drop-shadow(0 11px 6px rgba(172, 184, 204, 0.45));
+      color: #fff;
+      width: auto;
+      height: auto;
+      display: inline-flex;
+      &:before {
+        display: none;
+      }
     }
   }
 }
